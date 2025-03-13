@@ -100,7 +100,7 @@ class _HomeContentState extends State<HomeContent> {
       ),
       child: ClipOval(
         child: Image.network(
-          'assets/images/profile2.jpg',
+          'assets/images/profile.jpg',
           width: fixedSized ?? 300,
           height: fixedSized ?? 300,
           fit: BoxFit.cover,
