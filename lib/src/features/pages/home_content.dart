@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pongsathorn_port_app/src/shared/navigation_bar.dart';
+import 'package:pongsathorn_port_app/src/shared/app_bar.dart';
 import 'package:pongsathorn_port_app/src/styles/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,6 +13,50 @@ class HomeContent extends StatefulWidget {
 }
 
 class _HomeContentState extends State<HomeContent> {
+  List<Widget> appBarChildren(double width, {bool isMenu = false}) {
+    return [
+      navButton(
+        "Home",
+        width,
+        underline: true,
+        isMenu: isMenu,
+        onTap: () {
+          context.go("/Home");
+        },
+      ),
+      navButton(
+        "About",
+        width,
+        isMenu: isMenu,
+        onTap: () {
+          context.go("/About");
+        },
+      ),
+      navButton(
+        "Skills",
+        width,
+        isMenu: isMenu,
+        onTap: () {
+          context.go("/Skills");
+        },
+      ),
+      navButton(
+        "Career",
+        width,
+        isMenu: isMenu,
+        onTap: () {},
+      ),
+      navButton(
+        "Contact",
+        width,
+        isMenu: isMenu,
+        onTap: () {},
+      ),
+    ];
+  }
+
+  bool _isMenuVisible = false;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -19,32 +64,52 @@ class _HomeContentState extends State<HomeContent> {
     final height = size.height;
 
     return Scaffold(
+      appBar: MyAppBar(
+          width: width,
+          children: appBarChildren(width),
+          onTap: () {
+            setState(() {
+              _isMenuVisible = !_isMenuVisible;
+            });
+          }),
       backgroundColor: MyColors.darkNavy,
       body: SingleChildScrollView(
         child: width < 1440
-            ? homeMobileSize(mbHeight: height, mbWidth: width)
-            : homeDesktopSize(dtHeight: height, dtWidth: width),
+            ? _contentMobileSize(mbHeight: height, mbWidth: width)
+            : _contentDesktopSize(dtHeight: height, dtWidth: width),
       ),
     );
   }
 
   Widget profileImage({double? fixedSized}) {
     return Container(
-      width: fixedSized ?? 300,
-      height: fixedSized ?? 300,
       decoration: BoxDecoration(
-        //   image: AssetImage('assets/images/example.jpg'),
-        //   fit: BoxFit.cover,
-        // ), // image: const DecorationImage(
-
         borderRadius: BorderRadius.circular(300),
         boxShadow: const [
           BoxShadow(
-            color: Colors.black26,
+            color: Colors.black,
             blurRadius: 10,
-            offset: Offset(0, 5),
+            offset: Offset(0, 3),
+          ),
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 20,
+            offset: Offset(3, 3),
           ),
         ],
+      ),
+      child: ClipOval(
+        child: Image.network(
+          'assets/images/profile2.jpg',
+          width: fixedSized ?? 300,
+          height: fixedSized ?? 300,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) => Icon(
+            Icons.person,
+            size: fixedSized ?? 300,
+            color: Colors.grey,
+          ),
+        ),
       ),
     );
   }
@@ -58,13 +123,11 @@ class _HomeContentState extends State<HomeContent> {
   }) {
     String greetingStr = "Hi, I'm Fuang.";
     String roleStr = "Full Stack developer";
-    String desciptionStr = '''I’m Junior Full Stack Developer. 
-                        
-My objective is to develop a system that streamlines work processes and provides a comprehensive range of functionalities.
-                        
-From a one-year enlisted soldier aspiring to enhance skills and improve quality of life.
-                        
-                                  ''';
+
+    String desciptionStr = 'I’m Junior Full Stack Developer.\n\n'
+        'My objective is to develop a system that streamlines work processes \nand provides a comprehensive range of functionalities.\n\n'
+        'From a one-year enlisted soldier aspiring to enhance skills \nand improve quality of life.';
+
     return Padding(
       padding: EdgeInsets.fromLTRB(0, height * 5 / 100, 0, 0),
       child: Column(
@@ -86,7 +149,7 @@ From a one-year enlisted soldier aspiring to enhance skills and improve quality 
             ),
           ),
           Container(
-            width: width * 70 / 100,
+            // width: width * 70 / 100,
             padding: EdgeInsets.fromLTRB(
               width * 5 / 100,
               40,
@@ -132,10 +195,10 @@ From a one-year enlisted soldier aspiring to enhance skills and improve quality 
     );
   }
 
-  Widget homeDesktopSize({required double dtHeight, required double dtWidth}) {
+  Widget _contentDesktopSize(
+      {required double dtHeight, required double dtWidth}) {
     return Column(
       children: [
-        const Navbar(),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -160,10 +223,17 @@ From a one-year enlisted soldier aspiring to enhance skills and improve quality 
     );
   }
 
-  Widget homeMobileSize({required double mbHeight, required double mbWidth}) {
+  Widget _contentMobileSize({
+    required double mbHeight,
+    required double mbWidth,
+  }) {
     return Column(
       children: [
-        const Navbar(),
+        if (_isMenuVisible)
+          appBarMenu(
+            mbWidth,
+            appBarChildren(mbWidth, isMenu: true),
+          ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -183,7 +253,7 @@ From a one-year enlisted soldier aspiring to enhance skills and improve quality 
                       GoogleFonts.robotoMono(color: Colors.white, fontSize: 15),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, "/About");
+                  context.push("/About");
                 },
               ),
               Padding(

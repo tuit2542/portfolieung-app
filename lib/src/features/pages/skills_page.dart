@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pongsathorn_port_app/src/shared/navigation_bar.dart';
+import 'package:pongsathorn_port_app/src/shared/app_bar.dart';
 import 'package:pongsathorn_port_app/src/styles/colors.dart';
 
 class SkillsPage extends StatefulWidget {
@@ -46,6 +47,50 @@ class _SkillsPageState extends State<SkillsPage> {
     "English [ GOOD ]",
   ];
 
+  List<Widget> appBarChildren(double width, {bool isMenu = false}) {
+    return [
+      navButton(
+        "Home",
+        width,
+        isMenu: isMenu,
+        onTap: () {
+          context.go("/Home");
+        },
+      ),
+      navButton(
+        "About",
+        width,
+        isMenu: isMenu,
+        onTap: () {
+          context.go("/About");
+        },
+      ),
+      navButton(
+        "Skills",
+        width,
+        underline: true,
+        isMenu: isMenu,
+        onTap: () {
+          context.go("/Skills");
+        },
+      ),
+      navButton(
+        "Career",
+        width,
+        isMenu: isMenu,
+        onTap: () {},
+      ),
+      navButton(
+        "Contact",
+        width,
+        isMenu: isMenu,
+        onTap: () {},
+      ),
+    ];
+  }
+
+  bool _isMenuVisible = false;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -53,19 +98,31 @@ class _SkillsPageState extends State<SkillsPage> {
     double height = size.height;
 
     return Scaffold(
+      appBar: MyAppBar(
+          width: width,
+          children: appBarChildren(width),
+          onTap: () {
+            setState(() {
+              _isMenuVisible = !_isMenuVisible;
+            });
+          }),
       backgroundColor: MyColors.darkNavy,
       body: SingleChildScrollView(
         child: width < 900
-            ? skillsMobileSize(mbWidth: width, mbHeight: height)
-            : skillsDestopSize(dtWidth: width, dtHeight: height),
+            ? _contentMobileSize(mbWidth: width, mbHeight: height)
+            : _contentDestopSize(dtWidth: width, dtHeight: height),
       ),
     );
   }
 
-  Widget skillsMobileSize({required mbWidth, required double mbHeight}) {
+  Widget _contentMobileSize({required mbWidth, required double mbHeight}) {
     return Column(
       children: [
-        const Navbar(),
+        if (_isMenuVisible)
+          appBarMenu(
+            mbWidth,
+            appBarChildren(mbWidth, isMenu: true),
+          ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -165,10 +222,9 @@ class _SkillsPageState extends State<SkillsPage> {
     );
   }
 
-  Widget skillsDestopSize({required dtWidth, required double dtHeight}) {
+  Widget _contentDestopSize({required dtWidth, required double dtHeight}) {
     return Column(
       children: [
-        const Navbar(),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
