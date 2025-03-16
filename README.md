@@ -1,16 +1,54 @@
-# pongsathorn_port_app
 
-A new Flutter project.
+#  Portfolieung  
 
-## Getting Started
+![Netlify Status](https://api.netlify.com/api/v1/badges/2f4f3ef9-89b3-439f-8788-0df3360222f7/deploy-status)
 
-This project is a starting point for a Flutter application.
+## 🌐 Live Demo  
+🔗 [Visit Portfolieung](https://portfolieung.netlify.app)  
 
-A few resources to get you started if this is your first Flutter project:
+## 📖 About  
+**Portfolieung** is my personal web portfolio built using **Flutter Web**. It showcases my projects, skills, and experiences in a visually engaging way.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠 Built With  
+- **Flutter Web**  
+- **Dart**  
+- **Netlify (Hosting & Deployment)**  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Getting Started  
+
+### 🔧 Installation  
+1. **Clone this repository:**  
+   ```sh
+   git clone https://github.com/yourusername/portfolieung.git
+   cd portfolieung
+   ```
+2. **Install dependencies:**  
+   ```sh
+   flutter pub get
+   ```
+3. **Run the project locally:**  
+   ```sh
+   flutter run -d chrome
+   ```
+
+### 📦 Build for Production  
+To build the web app for deployment:  
+```sh
+flutter build web
+```
+The output will be in the `build/web` folder.  
+
+## 🌟 Features  
+✅ Responsive Design  
+✅ Fast & Optimized for Web  
+✅ Deployed on Netlify  
+
+## 📜 License  
+This project is **open-source**. Feel free to use and modify!  
+
+---
+
+🔹 **Author:** I2ichaD  
+📧 Contact: pongsathorn4542@gmail.com  
+🐱 GitHub: [tuit2542](https://github.com/tuit2542)  
+🚀 Portfolio: [Portfolieung](https://portfolieung.netlify.app)  
