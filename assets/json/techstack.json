@@ -1,0 +1,144 @@
+{
+    "techList": [
+        {
+            "android": "Android"
+        },
+        {
+            "angular": "Angular"
+        },
+        {
+            "css": "CSS"
+        },
+        {
+            "dart": "Dart"
+        },
+        {
+            "flutter": "Flutter"
+        },
+        {
+            "firebase": "Firebase"
+        },
+        {
+            "gcloud": "GoogleCloud"
+        },
+        {
+            "git": "Git"
+        },
+        {
+            "graphql": "GraphQL"
+        },
+        {
+            "html": "HTML"
+        },
+        {
+            "java": "Java"
+        },
+        {
+            "js": "JavaScript"
+        },
+        {
+            "json": "JSON"
+        },
+        {
+            "laravel": "Laravel"
+        },
+        {
+            "linux": "Linux"
+        },
+        {
+            "mysql": "MySQL"
+        },
+        {
+            "mariadb": "MariaDB"
+        },
+        {
+            "mongodb": "MongoDB"
+        },
+        {
+            "nodejs": "Node.js"
+        },
+        {
+            "nextjs": "Next.js"
+        },
+        {
+            "netlify": "Netlify"
+        },
+        {
+            "php": "PHP"
+        },
+        {
+            "postgresql": "PostgreSQL"
+        },
+        {
+            "python": "Python"
+        },
+        {
+            "reactjs": "ReactJS"
+        },
+        {
+            "redux": "Redux"
+        },
+        {
+            "sass": "Sass"
+        },
+        {
+            "spring": "Spring Boot"
+        },
+        {
+            "typescript": "TypeScript"
+        }
+    ],
+    "toolList": [
+        {
+            "azure": "Azure"
+        },
+        {
+            "bash": "Bash"
+        },
+        {
+            "canva": "Canva"
+        },
+        {
+            "docker": "Docker"
+        },
+        {
+            "figma": "Figma"
+        },
+        {
+            "github": "Github"
+        },
+        {
+            "gitlab": "Gitlab"
+        },
+        {
+            "homebrew": "Homebrew"
+        },
+        {
+            "jira": "Jira"
+        },
+        {
+            "npm": "NPM"
+        },
+        {
+            "openai": "Chat GPT"
+        },
+        {
+            "postman": "Postman"
+        },
+        {
+            "powershell": "PowerShell"
+        },
+        {
+            "prettier": "Prettier"
+        },
+        {
+            "swagger": "Swagger"
+        },
+        {
+            "ubuntu": "Ubuntu"
+        },
+        {
+            "vscode": "VSCode"
+        }
+    ]
+}

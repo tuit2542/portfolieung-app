@@ -1,9 +1,9 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pongsathorn_port_app/src/shared/app_bar.dart';
+import 'package:pongsathorn_port_app/src/features/core_page.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/app_bar.dart';
 import 'package:pongsathorn_port_app/src/styles/colors.dart';
 
 class AboutPage extends StatefulWidget {
@@ -33,50 +33,6 @@ I am eager hance my skills and contribute to a dynamic team.
   String majorName =
       '''Bachelor of Engineering Program in Electronics Engineering Technology ( Computer )''';
 
-  bool _isMenuVisible = false;
-
-  List<Widget> appBarChildren(double width, {bool isMenu = false}) {
-    return [
-      navButton(
-        "Home",
-        width,
-        isMenu: isMenu,
-        onTap: () {
-          context.go("/Home");
-        },
-      ),
-      navButton(
-        "About",
-        width,
-        underline: true,
-        isMenu: isMenu,
-        onTap: () {
-          context.go("/About");
-        },
-      ),
-      navButton(
-        "Skills",
-        width,
-        isMenu: isMenu,
-        onTap: () {
-          context.go("/Skills");
-        },
-      ),
-      navButton(
-        "Career",
-        width,
-        isMenu: isMenu,
-        onTap: () {},
-      ),
-      navButton(
-        "Contact",
-        width,
-        isMenu: isMenu,
-        onTap: () {},
-      ),
-    ];
-  }
-
   @override
   void initState() {
     super.initState();
@@ -93,20 +49,11 @@ I am eager hance my skills and contribute to a dynamic team.
     final width = size.width;
     final height = size.height;
 
-    return Scaffold(
-      appBar: MyAppBar(
-          width: width,
-          children: appBarChildren(width),
-          onTap: () {
-            setState(() {
-              _isMenuVisible = !_isMenuVisible;
-            });
-          }),
-      backgroundColor: MyColors.darkNavy,
-      body: SingleChildScrollView(
-          child: width < 900
-              ? _contentMobileSize(height: height, width: width)
-              : _contentDesktopSize(height: height, width: width)),
+    return CorePage(
+      label: "About",
+      child: width < 900
+          ? _contentMobileSize(height: height, width: width)
+          : _contentDesktopSize(height: height, width: width),
     );
   }
 
@@ -254,11 +201,6 @@ I am eager hance my skills and contribute to a dynamic team.
   Widget _contentMobileSize({required double height, required double width}) {
     return Column(
       children: [
-        if (_isMenuVisible)
-          appBarMenu(
-            width,
-            appBarChildren(width, isMenu: true),
-          ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -285,15 +227,16 @@ I am eager hance my skills and contribute to a dynamic team.
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.fromLTRB(width * 5 / 100, 0, width * 5 / 100, 0),
+                padding: EdgeInsets.fromLTRB(
+                    width * 5 / 100, 0, width * 5 / 100, 0),
                 child: Text(
                   desciptionData,
                   softWrap: true,
                   style: GoogleFonts.robotoMono(
-                      fontSize: 15,
-                      color: MyColors.white,
-                      fontWeight: FontWeight.w300),
+                    fontSize: 15,
+                    color: MyColors.white,
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
               ),
               Align(
@@ -361,20 +304,6 @@ I am eager hance my skills and contribute to a dynamic team.
                     ),
                   ),
                 ],
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: MaterialButton(
-                  child: Text(
-                    "Skills",
-                    style: GoogleFonts.robotoMono(
-                        color: Colors.white, fontSize: 15),
-                  ),
-                  onPressed: () {
-                    context.push("/Skills");
-                    // Navigator.pushNamed(context, "/Skills");
-                  },
-                ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(

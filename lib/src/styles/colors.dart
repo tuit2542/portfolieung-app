@@ -15,9 +15,9 @@ Widget lineBreak({Color? color, required double width}) {
       alignment: Alignment.center,
       child: Container(
         height: 3,
-        width: width * 70 / 100,
+        width: width * 80 / 100,
         decoration: BoxDecoration(
-          color: color ?? MyColors.lightNavy,
+          color: color ?? MyColors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(50),
         ),
       ),

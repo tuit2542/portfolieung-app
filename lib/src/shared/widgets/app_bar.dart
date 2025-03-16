@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/styles/colors.dart';
+import 'package:pongsathorn_port_app/src/styles/hover_text.dart';
 
-// ignore: must_be_immutable
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   double width;
   List<Widget> children;
@@ -19,15 +19,26 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: MyColors.darkNavy,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
+      ),
       title: Center(
-        child: InkWell(
-          onTap: () {
-            context.go("/");
-          },
-          child: Text(
-            width >= 1440 ? "Pongsathorn" : "   Pongsathorn",
-            style: GoogleFonts.kalam(
-              color: MyColors.white,
+        child: Container(
+          margin: width >= 1440
+              ? EdgeInsets.zero
+              : EdgeInsets.fromLTRB(50, 0, 0, 0),
+          child: InkWell(
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {
+              context.go("/");
+            },
+            child: HoverKalamText(
+              label: "Pongsathorn",
               fontSize: 40,
             ),
           ),
@@ -54,7 +65,7 @@ Widget navButton(
   String label,
   double width, {
   required Function() onTap,
-  bool underline = false,
+  String underlineString = "",
   bool isMenu = false,
 }) {
   return Padding(
@@ -62,17 +73,13 @@ Widget navButton(
         ? const EdgeInsets.all(0)
         : const EdgeInsets.only(left: 50, right: 50),
     child: InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
       onTap: onTap,
-      child: Text(
-        label,
-        style: GoogleFonts.kalam(
-          color: underline ? MyColors.lightPink : MyColors.white,
-          fontSize: 30,
-        ).copyWith(
-          decoration: underline ? TextDecoration.underline : null,
-          decorationColor: MyColors.lightPink,
-          decorationThickness: 3,
-        ),
+      child: HoverKalamText(
+        label: label,
+        underline: label.toLowerCase() == underlineString.toLowerCase(),
       ),
     ),
   );
@@ -93,22 +100,23 @@ Widget footerCredit() {
 
 Widget appBarMenu(double width, List<Widget> children) {
   return Positioned(
-    top: 60, // Adjust this based on where you want the menu to appear
-    left: width / 2 - 100, // Centering it
     child: Container(
-      width: 200,
+      width: width,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: MyColors.lightNavy,
-        borderRadius: BorderRadius.circular(12),
+        color: MyColors.darkNavy,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
         boxShadow: const [
-          BoxShadow(color: Colors.black26, blurRadius: 5),
+          BoxShadow(color: Colors.black, blurRadius: 10, offset: Offset(3, 3)),
         ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ...children.map((Widget item) => item),
+          ...children,
         ],
       ),
     ),

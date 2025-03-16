@@ -1,60 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pongsathorn_port_app/src/shared/app_bar.dart';
+import 'package:pongsathorn_port_app/src/features/core_page.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/app_bar.dart';
 import 'package:pongsathorn_port_app/src/styles/colors.dart';
+import 'package:pongsathorn_port_app/src/styles/hover_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class HomeContent extends StatefulWidget {
-  const HomeContent({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeContent> createState() => _HomeContentState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeContentState extends State<HomeContent> {
-  List<Widget> appBarChildren(double width, {bool isMenu = false}) {
-    return [
-      navButton(
-        "Home",
-        width,
-        underline: true,
-        isMenu: isMenu,
-        onTap: () {
-          context.go("/Home");
-        },
-      ),
-      navButton(
-        "About",
-        width,
-        isMenu: isMenu,
-        onTap: () {
-          context.go("/About");
-        },
-      ),
-      navButton(
-        "Skills",
-        width,
-        isMenu: isMenu,
-        onTap: () {
-          context.go("/Skills");
-        },
-      ),
-      navButton(
-        "Career",
-        width,
-        isMenu: isMenu,
-        onTap: () {},
-      ),
-      navButton(
-        "Contact",
-        width,
-        isMenu: isMenu,
-        onTap: () {},
-      ),
-    ];
-  }
-
+class _HomePageState extends State<HomePage> {
   bool _isMenuVisible = false;
 
   @override
@@ -63,21 +22,19 @@ class _HomeContentState extends State<HomeContent> {
     final width = size.width;
     final height = size.height;
 
-    return Scaffold(
-      appBar: MyAppBar(
-          width: width,
-          children: appBarChildren(width),
-          onTap: () {
-            setState(() {
-              _isMenuVisible = !_isMenuVisible;
-            });
-          }),
-      backgroundColor: MyColors.darkNavy,
-      body: SingleChildScrollView(
-        child: width < 1440
-            ? _contentMobileSize(mbHeight: height, mbWidth: width)
-            : _contentDesktopSize(dtHeight: height, dtWidth: width),
-      ),
+    bool isMobile = width < 1440;
+
+    if (!isMobile && _isMenuVisible) {
+      setState(() {
+        _isMenuVisible = false;
+      });
+    }
+
+    return CorePage(
+      label: "Home",
+      child: (isMobile)
+          ? _contentMobileSize(mbHeight: height, mbWidth: width)
+          : _contentDesktopSize(dtHeight: height, dtWidth: width),
     );
   }
 
@@ -128,6 +85,13 @@ class _HomeContentState extends State<HomeContent> {
         'My objective is to develop a system that streamlines work processes \nand provides a comprehensive range of functionalities.\n\n'
         'From a one-year enlisted soldier aspiring to enhance skills \nand improve quality of life.';
 
+    String desciptionStr2 =
+        '''I’m Junior Full Stack Developer.                                                                    \n
+My objective is to develop a system that streamlines work processes and provides a comprehensive range of functionalities.       \n
+From a one-year enlisted soldier aspiring to enhance skills \nand improve quality of life.''';
+
+    bool isMobile = width < 700;
+
     return Padding(
       padding: EdgeInsets.fromLTRB(0, height * 5 / 100, 0, 0),
       child: Column(
@@ -149,7 +113,7 @@ class _HomeContentState extends State<HomeContent> {
             ),
           ),
           Container(
-            // width: width * 70 / 100,
+            width: isMobile ? width * 70 / 100 : null,
             padding: EdgeInsets.fromLTRB(
               width * 5 / 100,
               40,
@@ -157,7 +121,7 @@ class _HomeContentState extends State<HomeContent> {
               0,
             ),
             child: Text(
-              desciptionStr,
+              isMobile ? desciptionStr2 : desciptionStr,
               style: GoogleFonts.robotoMono(
                 color: MyColors.white,
                 fontSize: regularSize,
@@ -172,25 +136,28 @@ class _HomeContentState extends State<HomeContent> {
   }
 
   Widget downloadCV(double width, double height) {
+    Color hoverColor = MyColors.lightPink;
+
     final Uri url = Uri.parse(
         'https://www.canva.com/design/DAGM5S6rgOg/q3Qbq7AH-mV73ssgS0O8Mg/view?utm_content=DAGM5S6rgOg&utm_campaign=designshare&utm_medium=link&utm_source=editor');
 
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0, height * 10 / 100, 0, height * 2 / 100),
-      child: InkWell(
-        child: Container(
-          color: MyColors.lightNavy,
-          child: Text(
-            "Download CV",
-            style: GoogleFonts.robotoMono(
-              fontSize: 20,
-              color: MyColors.lightPink,
-            ),
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, height * 10 / 100, 0, height * 2 / 100),
+      color: MyColors.lightNavy,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          hoverColor: hoverColor,
+          child: HoverRobotoMonoText(
+            label: "Download CV",
+            fontSize: 20,
+            hoverColor: MyColors.white,
+            textColor: MyColors.lightPink,
           ),
+          onTap: () async {
+            await launchUrl(url);
+          },
         ),
-        onTap: () async {
-          await launchUrl(url);
-        },
       ),
     );
   }
@@ -229,11 +196,6 @@ class _HomeContentState extends State<HomeContent> {
   }) {
     return Column(
       children: [
-        if (_isMenuVisible)
-          appBarMenu(
-            mbWidth,
-            appBarChildren(mbWidth, isMenu: true),
-          ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Column(
@@ -245,16 +207,6 @@ class _HomeContentState extends State<HomeContent> {
                 regularSize: 15,
                 topicSize: 30,
                 titleSize: 50,
-              ),
-              MaterialButton(
-                child: Text(
-                  "About",
-                  style:
-                      GoogleFonts.robotoMono(color: Colors.white, fontSize: 15),
-                ),
-                onPressed: () {
-                  context.push("/About");
-                },
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(

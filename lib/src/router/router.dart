@@ -4,7 +4,7 @@
 // import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pongsathorn_port_app/src/features/pages/about_page.dart';
-import 'package:pongsathorn_port_app/src/features/pages/home_content.dart';
+import 'package:pongsathorn_port_app/src/features/pages/home_page.dart';
 import 'package:pongsathorn_port_app/src/features/pages/skills_page.dart';
 
 class AppRouter {
@@ -17,13 +17,13 @@ class AppRouter {
       GoRoute(
         path: '/',
         builder: (context, state) {
-          return const HomeContent();
+          return const HomePage();
         },
       ),
       GoRoute(
         path: '/Home',
         builder: (context, state) {
-          return const HomeContent();
+          return const HomePage();
         },
       ),
       GoRoute(
@@ -41,13 +41,13 @@ class AppRouter {
       GoRoute(
         path: '/Career',
         builder: (context, state) {
-          return const HomeContent();
+          return const HomePage();
         },
       ),
       GoRoute(
         path: '/Contact',
         builder: (context, state) {
-          return const HomeContent();
+          return const HomePage();
         },
       ),
     ],
