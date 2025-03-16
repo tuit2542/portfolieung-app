@@ -67,6 +67,9 @@
             "php": "PHP"
         },
         {
+            "postgresql": "PostgreSQL"
+        },
+        {
             "python": "Python"
         },
         {
@@ -114,10 +117,16 @@
             "jira": "Jira"
         },
         {
+            "npm": "NPM"
+        },
+        {
             "openai": "ChatGPT"
         },
         {
             "postman": "Postman"
+        },
+        {
+            "powershell": "PowerShell"
         },
         {
             "prettier": "Prettier"

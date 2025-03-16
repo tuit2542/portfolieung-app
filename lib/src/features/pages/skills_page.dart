@@ -63,79 +63,96 @@ class _SkillsPageState extends State<SkillsPage> {
     double width = size.width;
     double height = size.height;
 
+    bool isMobile = width < 1440 ? true : false;
+
     return CorePage(
       label: "Skills",
       isLoading: _isLoading,
-      child:
-          // isMobile
-          // ? _contentMobileSize(mbWidth: width, mbHeight: height)
-          _contentDestopSize(dtWidth: width, dtHeight: height),
+      child: isMobile
+          ? _contentMobileSize(mbWidth: width, mbHeight: height)
+          : _contentDestopSize(dtWidth: width, dtHeight: height),
     );
   }
 
-  // Widget _contentMobileSize({required mbWidth, required double mbHeight}) {
-  //   return Column(
-  //     children: [
-  //       Align(
-  //         alignment: Alignment.center,
-  //         child: Text(
-  //           "Tech Stack",
-  //           style: GoogleFonts.kalam(
-  //             fontSize: 40,
-  //             color: MyColors.lightPink,
-  //           ),
-  //         ),
-  //       ),
-  //       _boxList(width: mbWidth, list: techList),
-  //       lineBreak(width: mbWidth),
-  //       Align(
-  //         alignment: Alignment.center,
-  //         child: Text(
-  //           "Tools",
-  //           softWrap: true,
-  //           style: GoogleFonts.kalam(
-  //             fontSize: 40,
-  //             color: MyColors.lightPink,
-  //           ),
-  //         ),
-  //       ),
-  //       _boxList(width: mbWidth, list: toolList),
-  //       lineBreak(width: mbWidth),
-  //       Align(
-  //         alignment: Alignment.center,
-  //         child: Text(
-  //           "Languages",
-  //           softWrap: true,
-  //           style: GoogleFonts.kalam(
-  //             fontSize: 40,
-  //             color: MyColors.lightPink,
-  //           ),
-  //         ),
-  //       ),
-  //       Align(
-  //         alignment: Alignment.center,
-  //         child: Column(
-  //           children: [
-  //             ...laguageList.map(
-  //               (language) => Text(
-  //                 language,
-  //                 style: GoogleFonts.robotoMono(
-  //                   fontSize: 15,
-  //                   color: MyColors.white,
-  //                 ),
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //       Container(
-  //         margin: EdgeInsets.fromLTRB(
-  //             0, mbHeight * 20 / 100, 0, mbHeight * 2 / 100),
-  //         child: footerCredit(),
-  //       ),
-  //     ],
-  //   );
-  // }
+  Widget _contentMobileSize({required mbWidth, required double mbHeight}) {
+    return Column(
+      children: [
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            "Tech Stack",
+            style: GoogleFonts.kalam(
+              fontSize: 40,
+              color: MyColors.lightPink,
+            ),
+          ),
+        ),
+        _boxList(
+          width: mbWidth,
+          height: mbHeight,
+          list: techList,
+          iconSize: 40,
+          boxSize: 90,
+          fontSize: 10,
+          mutiplier: 0.8,
+        ),
+        lineBreak(width: mbWidth),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            "Tools",
+            softWrap: true,
+            style: GoogleFonts.kalam(
+              fontSize: 40,
+              color: MyColors.lightPink,
+            ),
+          ),
+        ),
+        _boxList(
+          width: mbWidth,
+          height: mbHeight,
+          list: toolList,
+          iconSize: 40,
+          boxSize: 90,
+          fontSize: 10,
+          mutiplier: 0.8,
+        ),
+        lineBreak(width: mbWidth),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            "Languages",
+            softWrap: true,
+            style: GoogleFonts.kalam(
+              fontSize: 40,
+              color: MyColors.lightPink,
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              ...laguageList.map(
+                (language) => Text(
+                  language,
+                  style: GoogleFonts.robotoMono(
+                    fontSize: 15,
+                    color: MyColors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.fromLTRB(
+              0, mbHeight * 20 / 100, 0, mbHeight * 2 / 100),
+          child: footerCredit(),
+        ),
+      ],
+    );
+  }
 
   Widget _contentDestopSize({
     required dtWidth,
@@ -208,6 +225,9 @@ class _SkillsPageState extends State<SkillsPage> {
   Widget _boxList({
     required double width,
     required double height,
+    double iconSize = 60,
+    double fontSize = 14,
+    double boxSize = 120,
     double mutiplier = 1,
     List<Map<String, dynamic>>? list,
   }) {
@@ -222,6 +242,9 @@ class _SkillsPageState extends State<SkillsPage> {
         children: List.generate(
           list?.length ?? 10,
           (index) => ContainerCard(
+            iconSize: iconSize,
+            fontSize: fontSize,
+            boxSize: boxSize,
             isLoading: _isLoading,
             logoStr: list?[index].keys.first ?? "",
             label: list?[index].values.first ?? "",
@@ -239,10 +262,10 @@ class _SkillsPageState extends State<SkillsPage> {
     double multiplier = 1,
   }) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Container(
+      return SizedBox(
         // duration: Duration(milliseconds: milliseconds),
         // curve: Curves.easeInOut,
-        width: width * 0.7,
+        width: width * multiplier,
         child: Center(child: child),
       );
     });
