@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/app_bar.dart';
-import 'package:pongsathorn_port_app/src/styles/colors.dart';
-import 'package:pongsathorn_port_app/src/styles/hover_text.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
+import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/hover_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {

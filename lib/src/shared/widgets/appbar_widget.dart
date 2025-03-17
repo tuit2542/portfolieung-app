@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pongsathorn_port_app/src/styles/colors.dart';
-import 'package:pongsathorn_port_app/src/styles/hover_text.dart';
+import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/hover_widget.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   double width;
@@ -40,6 +40,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: HoverKalamText(
               label: "Pongsathorn",
               fontSize: 40,
+              textColor: MyColors.lightPink,
             ),
           ),
         ),

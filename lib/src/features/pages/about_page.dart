@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/app_bar.dart';
-import 'package:pongsathorn_port_app/src/styles/colors.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
+import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -33,6 +33,8 @@ I am eager hance my skills and contribute to a dynamic team.
   String majorName =
       '''Bachelor of Engineering Program in Electronics Engineering Technology ( Computer )''';
 
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -40,6 +42,7 @@ I am eager hance my skills and contribute to a dynamic team.
 
   @override
   void dispose() {
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -50,6 +53,7 @@ I am eager hance my skills and contribute to a dynamic team.
     final height = size.height;
 
     return CorePage(
+      controller: _scrollController,
       label: "About",
       child: width < 900
           ? _contentMobileSize(height: height, width: width)
@@ -227,8 +231,8 @@ I am eager hance my skills and contribute to a dynamic team.
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(
-                    width * 5 / 100, 0, width * 5 / 100, 0),
+                padding:
+                    EdgeInsets.fromLTRB(width * 5 / 100, 0, width * 5 / 100, 0),
                 child: Text(
                   desciptionData,
                   softWrap: true,

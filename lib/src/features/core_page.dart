@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/app_bar.dart';
-import 'package:pongsathorn_port_app/src/styles/colors.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
+import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
 
 class CorePage extends StatefulWidget {
   Widget child;
   String label;
   bool isLoading;
+  ScrollController? controller;
 
   @override
   CorePage({
@@ -14,6 +15,7 @@ class CorePage extends StatefulWidget {
     required this.child,
     this.label = '',
     this.isLoading = false,
+    this.controller,
   });
 
   @override
@@ -55,7 +57,9 @@ class _CorePageState extends State<CorePage> {
         width,
         isMenu: isMenu,
         underlineString: widget.label,
-        onTap: () {},
+        onTap: () {
+          context.go("/Career");
+        },
       ),
       navButton(
         "Contact",
@@ -102,7 +106,8 @@ class _CorePageState extends State<CorePage> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            child: widget.child,
+            child: Scrollbar(
+                controller: widget.controller, child: widget.child),
           ),
           if (_isMenuVisible && isMobile)
             appBarMenu(

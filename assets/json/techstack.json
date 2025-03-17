@@ -11,7 +11,7 @@
         },
         {
             "dart": "Dart"
-        },
+        },   
         {
             "flutter": "Flutter"
         },
@@ -65,9 +65,6 @@
         },
         {
             "php": "PHP"
-        },
-        {
-            "python": "Python"
         },
         {
             "reactjs": "ReactJS"

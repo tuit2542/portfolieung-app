@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
 import 'package:pongsathorn_port_app/src/shared/utils/function.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/app_bar.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/tech_card.dart';
-import 'package:pongsathorn_port_app/src/styles/colors.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/card_widget.dart';
+import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
 
 class SkillsPage extends StatefulWidget {
   const SkillsPage({super.key});
