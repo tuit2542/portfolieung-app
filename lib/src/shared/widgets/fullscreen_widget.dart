@@ -24,7 +24,7 @@ class FullScreenImage extends StatelessWidget {
               panEnabled: true,
               minScale: 1.0,
               maxScale: 4.0,
-              child: Image.network(imageUrl, fit: BoxFit.contain),
+              child: Image.asset(imageUrl, fit: BoxFit.contain),
             ),
           ),
         ),
