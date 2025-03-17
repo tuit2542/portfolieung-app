@@ -18,17 +18,18 @@ class CarouselExample extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
+    bool isMobile = width < 600 ? true : false;
+
     return Container(
-      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-      width: width * 0.8,
-      height: height * 0.5,
+      padding: EdgeInsets.fromLTRB(0, isMobile ? 0 : 50, 0, 0),
+      height: height * 0.6,
       child: CarouselSlider(
         controller: controller,
         options: CarouselOptions(
-          // autoPlay: true,
+          autoPlay: true,
           aspectRatio: 16 / 9,
           enlargeCenterPage: true,
-          enlargeFactor: 0.5,
+          enlargeFactor: 2,
         ),
         items: imageList.map(
           (fileName) {

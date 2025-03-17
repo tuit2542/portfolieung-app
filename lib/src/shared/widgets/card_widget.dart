@@ -35,7 +35,7 @@ class ContainerCard extends StatelessWidget {
           width: boxSize,
           height: boxSize,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withOpacity(0.3),
             borderRadius: BorderRadius.circular(10),
           ),
         ),
@@ -44,7 +44,7 @@ class ContainerCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: MyColors.white.withOpacity(0.2),
+        color: MyColors.white.withOpacity(0.3),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Material(

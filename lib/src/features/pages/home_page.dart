@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
@@ -79,16 +80,16 @@ class _HomePageState extends State<HomePage> {
     double titleSize = 70,
   }) {
     String greetingStr = "Hi, I'm Fuang.";
-    String roleStr = "Full Stack developer";
+    String roleStr = "Full Stack developer  ";
 
     String desciptionStr = 'I’m Junior Full Stack Developer.\n\n'
         'My objective is to develop a system that streamlines work processes \nand provides a comprehensive range of functionalities.\n\n'
-        'From a one-year enlisted soldier aspiring to enhance skills \nand improve quality of life.';
+        'After completing military service, I am committed to enhancing my skills \nand improving my quality of life.';
 
     String desciptionStr2 =
         '''I’m Junior Full Stack Developer.                                                                    \n
-My objective is to develop a system that streamlines work processes and provides a comprehensive range of functionalities.       \n
-From a one-year enlisted soldier aspiring to enhance skills \nand improve quality of life.''';
+My objective is to develop a system that streamlines work processes \nand provides a comprehensive range of functionalities.       \n
+After completing military service, I am committed to enhancing my skills and improving my quality of life.''';
 
     bool isMobile = width < 700;
 
@@ -96,12 +97,22 @@ From a one-year enlisted soldier aspiring to enhance skills \nand improve qualit
       padding: EdgeInsets.fromLTRB(0, height * 5 / 100, 0, 0),
       child: Column(
         children: [
-          Text(
-            greetingStr,
-            style: GoogleFonts.kalam(
-              color: MyColors.white,
-              fontSize: titleSize,
-              fontWeight: FontWeight.w900,
+          Center(
+            child: AnimatedTextKit(
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  greetingStr,
+                  textStyle: GoogleFonts.kalam(
+                    color: MyColors.white,
+                    fontSize: titleSize,
+                    fontWeight: FontWeight.w900,
+                  ),
+                  cursor: '|',
+                  speed: Duration(milliseconds: 100),
+                ),
+              ],
+              totalRepeatCount: 3,
+              pause: Duration(milliseconds: 1500),
             ),
           ),
           Text(
@@ -139,7 +150,7 @@ From a one-year enlisted soldier aspiring to enhance skills \nand improve qualit
     Color hoverColor = MyColors.lightPink;
 
     final Uri url = Uri.parse(
-        'https://www.canva.com/design/DAGM5S6rgOg/q3Qbq7AH-mV73ssgS0O8Mg/view?utm_content=DAGM5S6rgOg&utm_campaign=designshare&utm_medium=link&utm_source=editor');
+        'https://drive.google.com/file/d/1F5XAJgbB7yLK0sbtuwRWbJ5v1UT1XLIN/view?usp=drive_link');
 
     return Container(
       margin: EdgeInsets.fromLTRB(0, height * 10 / 100, 0, height * 2 / 100),

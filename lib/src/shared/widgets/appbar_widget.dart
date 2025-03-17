@@ -39,8 +39,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             child: HoverKalamText(
               label: "Pongsathorn",
-              fontSize: 40,
-              textColor: MyColors.lightPink,
+              fontSize: 50,
+              textColor: MyColors.white,
             ),
           ),
         ),

@@ -11,7 +11,7 @@
         },
         {
             "dart": "Dart"
-        },   
+        },
         {
             "flutter": "Flutter"
         },
@@ -50,9 +50,6 @@
         },
         {
             "mariadb": "MariaDB"
-        },
-        {
-            "mongodb": "MongoDB"
         },
         {
             "nodejs": "Node.js"

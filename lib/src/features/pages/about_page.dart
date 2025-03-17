@@ -64,139 +64,136 @@ I am eager hance my skills and contribute to a dynamic team.
   Widget _contentDesktopSize({required double height, required double width}) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        width * 5 / 100,
-                        0,
-                        width * 5 / 100,
-                        0,
-                      ),
-                      child: Text(
-                        "About",
-                        style: GoogleFonts.kalam(
-                          fontSize: 70,
-                          color: MyColors.lightPink,
-                        ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      width * 5 / 100,
+                      0,
+                      width * 5 / 100,
+                      0,
+                    ),
+                    child: Text(
+                      "About Me",
+                      style: GoogleFonts.kalam(
+                        fontSize: 50,
+                        color: MyColors.lightPink,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        width * 5 / 100,
-                        0,
-                        width * 5 / 100,
-                        0,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      width * 5 / 100,
+                      0,
+                      width * 5 / 100,
+                      0,
+                    ),
+                    child: Text(
+                      personalData,
+                      style: GoogleFonts.robotoMono(
+                        fontSize: 24,
+                        color: MyColors.white,
                       ),
-                      child: Text(
-                        personalData,
-                        style: GoogleFonts.robotoMono(
-                          fontSize: 24,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        width * 5 / 100, 0, width * 5 / 100, 0),
+                    child: Text(
+                      desciptionData,
+                      softWrap: true,
+                      style: GoogleFonts.robotoMono(
+                          fontSize: 20,
                           color: MyColors.white,
-                        ),
+                          fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      width * 5 / 100,
+                      0,
+                      width * 5 / 100,
+                      0,
+                    ),
+                    child: Text(
+                      "Education",
+                      style: GoogleFonts.kalam(
+                        fontSize: 50,
+                        color: MyColors.lightPink,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          width * 5 / 100, 0, width * 5 / 100, 0),
-                      child: Text(
-                        desciptionData,
-                        softWrap: true,
-                        style: GoogleFonts.robotoMono(
-                            fontSize: 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      width * 5 / 100,
+                      0,
+                      0,
+                      0,
+                    ),
+                    child: Text(
+                      collegeName,
+                      style: GoogleFonts.robotoMono(
+                        fontSize: 40,
+                        color: MyColors.darkPink,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      width * 5 / 100,
+                      10,
+                      0,
+                      0,
+                    ),
+                    child: Text(
+                      majorName,
+                      style: GoogleFonts.robotoMono(
+                        fontSize: 24,
+                        color: MyColors.white,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
+                        child: Text(
+                          "GPAX 3.02",
+                          style: GoogleFonts.robotoMono(
+                            fontSize: 24,
                             color: MyColors.white,
-                            fontWeight: FontWeight.w300),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        width * 5 / 100,
-                        0,
-                        width * 5 / 100,
-                        0,
-                      ),
-                      child: Text(
-                        "Education",
-                        style: GoogleFonts.kalam(
-                          fontSize: 70,
-                          color: MyColors.lightPink,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        width * 5 / 100,
-                        0,
-                        0,
-                        0,
-                      ),
-                      child: Text(
-                        collegeName,
-                        style: GoogleFonts.robotoMono(
-                          fontSize: 40,
-                          color: MyColors.darkPink,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        width * 5 / 100,
-                        10,
-                        0,
-                        0,
-                      ),
-                      child: Text(
-                        majorName,
-                        style: GoogleFonts.robotoMono(
-                          fontSize: 24,
-                          color: MyColors.white,
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
-                          child: Text(
-                            "GPAX 3.02",
-                            style: GoogleFonts.robotoMono(
-                              fontSize: 24,
-                              color: MyColors.white,
-                            ),
                           ),
                         ),
-                        Padding(
-                          padding:
-                              EdgeInsets.fromLTRB(0, 10, width * 5 / 100, 0),
-                          child: Text(
-                            "2019 - 2022",
-                            style: GoogleFonts.robotoMono(
-                              fontSize: 24,
-                              color: MyColors.white,
-                            ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsets.fromLTRB(0, 10, width * 5 / 100, 0),
+                        child: Text(
+                          "2019 - 2022",
+                          style: GoogleFonts.robotoMono(
+                            fontSize: 24,
+                            color: MyColors.white,
                           ),
                         ),
-                      ],
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0, height * 20 / 100, 0, height * 2 / 100),
-                      child: footerCredit(),
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(
+                        0, height * 20 / 100, 0, height * 2 / 100),
+                    child: footerCredit(),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
@@ -205,117 +202,114 @@ I am eager hance my skills and contribute to a dynamic team.
   Widget _contentMobileSize({required double height, required double width}) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "About",
-                  style: GoogleFonts.kalam(
-                    fontSize: 50,
-                    color: MyColors.lightPink,
-                  ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "About Me",
+                style: GoogleFonts.kalam(
+                  fontSize: 40,
+                  color: MyColors.lightPink,
                 ),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  personalData,
-                  style: GoogleFonts.robotoMono(
-                    fontSize: 15,
-                    color: MyColors.white,
-                  ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                personalData,
+                style: GoogleFonts.robotoMono(
+                  fontSize: 15,
+                  color: MyColors.white,
                 ),
               ),
-              Padding(
-                padding:
-                    EdgeInsets.fromLTRB(width * 5 / 100, 0, width * 5 / 100, 0),
-                child: Text(
-                  desciptionData,
-                  softWrap: true,
-                  style: GoogleFonts.robotoMono(
-                    fontSize: 15,
-                    color: MyColors.white,
-                    fontWeight: FontWeight.w300,
-                  ),
+            ),
+            Padding(
+              padding:
+                  EdgeInsets.fromLTRB(width * 5 / 100, 0, width * 5 / 100, 0),
+              child: Text(
+                desciptionData,
+                softWrap: true,
+                style: GoogleFonts.robotoMono(
+                  fontSize: 15,
+                  color: MyColors.white,
+                  fontWeight: FontWeight.w300,
                 ),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Education",
-                  softWrap: true,
-                  style: GoogleFonts.kalam(
-                    fontSize: 50,
-                    color: MyColors.lightPink,
-                  ),
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Text(
+                "Education",
+                softWrap: true,
+                style: GoogleFonts.kalam(
+                  fontSize: 40,
+                  color: MyColors.lightPink,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(width * 5 / 100, 0, 0, 0),
-                child: Text(
-                  collegeName,
-                  style: GoogleFonts.robotoMono(
-                    fontSize: 20,
-                    color: MyColors.darkPink,
-                  ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(width * 5 / 100, 0, 0, 0),
+              child: Text(
+                collegeName,
+                style: GoogleFonts.robotoMono(
+                  fontSize: 20,
+                  color: MyColors.darkPink,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
-                child: Text(
-                  majorName,
-                  style: GoogleFonts.robotoMono(
-                    fontSize: 15,
-                    color: MyColors.white,
-                  ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
+              child: Text(
+                majorName,
+                style: GoogleFonts.robotoMono(
+                  fontSize: 15,
+                  color: MyColors.white,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      width * 5 / 100,
-                      15,
-                      0,
-                      0,
-                    ),
-                    child: Text(
-                      "GPAX 3.02",
-                      style: GoogleFonts.robotoMono(
-                          fontSize: 15,
-                          color: MyColors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    width * 5 / 100,
+                    15,
+                    0,
+                    0,
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      0,
-                      15,
-                      width * 50 / 1000,
-                      0,
-                    ),
-                    child: Text(
-                      "2019 - 2022",
-                      style: GoogleFonts.robotoMono(
-                          fontSize: 15,
-                          color: MyColors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  child: Text(
+                    "GPAX 3.02",
+                    style: GoogleFonts.robotoMono(
+                        fontSize: 15,
+                        color: MyColors.white,
+                        fontWeight: FontWeight.bold),
                   ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(
-                    0, height * 20 / 100, 0, height * 2 / 100),
-                child: footerCredit(),
-              ),
-            ],
-          ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    0,
+                    15,
+                    width * 50 / 1000,
+                    0,
+                  ),
+                  child: Text(
+                    "2019 - 2022",
+                    style: GoogleFonts.robotoMono(
+                        fontSize: 15,
+                        color: MyColors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(
+                  0, height * 20 / 100, 0, height * 2 / 100),
+              child: footerCredit(),
+            ),
+          ],
         ),
       ],
     );

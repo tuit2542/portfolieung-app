@@ -40,6 +40,7 @@ dependencies:
   go_router: ^14.8.1
   shimmer: ^3.0.0
   carousel_slider_plus: ^7.1.0
+  animated_text_kit: ^4.2.3
 
 dev_dependencies:
   flutter_test:

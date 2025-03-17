@@ -20,9 +20,9 @@ class _CareerPageState extends State<CareerPage> {
     'position': 'Software Engineer',
     'date': 'JAN 2022 - APR 2022',
     'detail':
-        '''• Development gateway E-wallet( Mae Manee ) and coordinate product owner.\n( CA API, mountebank, Swagger )\n
-• Create new microservices for another team.\n( Java, Spring Boot )\n
-• Handle issue request, Find the cause and advise to internal and external parties.\n( Kibana, Log viewer )'''
+        '''• Developed the Mae Manee E-wallet gateway and coordinated with the product owner.\n( CA API, mountebank, Swagger )\n
+• Develop new microservices for another team.\n( Java, Spring Boot )\n
+• Handle issue requests, identify the cause, and provide advice to both internal and external parties.\n( Kibana, Log viewer )'''
   };
 
   Map<String, dynamic> bbtv = {
@@ -31,22 +31,30 @@ class _CareerPageState extends State<CareerPage> {
     'position': 'Junior Full Stack Developer',
     'date': 'AUG 2022 - JUL 2023',
     'detail':
-        '''• Rectified customer issues within Jira for Frontend Development.\n( Type Script, Angular, React )\n
-• Developed an internal pilot application.\n( Flutter, GraphQL, Figma )\n
-• Re-Techstack already project.\n( PHP, Laravel, MySQL )'''
+        '''• Resolved customer issues related to Frontend Development in Jira.\n( Type Script, Angular, React )\n
+• Created an internal pilot application.\n( Flutter, GraphQL, Figma )\n
+• Update the tech stack for the existing project.\n( PHP, Laravel, MySQL )'''
   };
 
   Map<String, dynamic> marine = {
     'logo': 'assets/logos/career/logo_marine.png',
-    'name': 'Naval Special Warfare Command,\nRoyal Thai Fleet, Royal Thai Navy',
-    'position': 'Marine',
+    'name':
+        'Naval Special Warfare Command,\nRoyal Thai Fleet,\nRoyal Thai Navy',
+    'position': 'Marine and Administrator',
     'date': 'AUG 2023 - JUL 2024',
     'detail':
-        '''• Administrative at RTN Recruit Training Center and Fleet Training Command.\n
-• Garrison guard, Security, Traffic Soldier and Gunner at Naval Special Wafare Command.'''
+        '''• Handled administrative tasks and data entry at RTN Recruit Training Center and Fleet Training Command.\n
+• Served as a garrison guard, security personnel, traffic soldier, and gunner at the Naval Special Warfare Command.'''
   };
 
-  String assetPath = 'assets/images/career';
+  List<String> scbImgList =
+      List.generate(3, (index) => 'assets/images/career/scb${index + 1}.png');
+
+  List<String> bbtvImgList =
+      List.generate(3, (index) => 'assets/images/career/bbtv${index + 1}.png');
+
+  List<String> marineImgList = List.generate(
+      4, (index) => 'assets/images/career/marine${index + 1}.png');
 
   @override
   Widget build(BuildContext context) {
@@ -77,9 +85,9 @@ class _CareerPageState extends State<CareerPage> {
         careerDetail(text: scb, style: robotoMono, width: width),
         CarouselExample(
           controller: carouselController,
-          imageList:
-              List.generate(3, (index) => '$assetPath/scb${index + 1}.png'),
+          imageList: scbImgList,
         ),
+        lineBreak(width: width),
         SizedBox(height: 50),
         Text(
           "Work Experienced",
@@ -88,16 +96,16 @@ class _CareerPageState extends State<CareerPage> {
         careerDetail(text: bbtv, style: robotoMono, width: width),
         CarouselExample(
           controller: carouselController,
-          imageList:
-              List.generate(3, (index) => '$assetPath/bbtv${index + 1}.png'),
+          imageList: bbtvImgList,
         ),
         SizedBox(height: 50),
+        lineBreak(width: width),
         careerDetail(text: marine, style: robotoMono, width: width),
         CarouselExample(
           controller: carouselController,
-          imageList:
-              List.generate(3, (index) => '$assetPath/marine${index + 1}.png'),
+          imageList: marineImgList,
         ),
+        lineBreak(width: width),
         SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.all(10),
@@ -119,10 +127,10 @@ class _CareerPageState extends State<CareerPage> {
             text: scb, style: robotoMono, width: width, isMobile: false),
         CarouselExample(
           controller: carouselController,
-          imageList:
-              List.generate(3, (index) => '$assetPath/scb${index + 1}.png'),
+          imageList: scbImgList,
         ),
-        SizedBox(height: 50),
+        lineBreak(width: width),
+        SizedBox(height: 100),
         Text(
           "Work Experienced",
           style: kalam.copyWith(fontSize: 50, color: MyColors.lightPink),
@@ -131,17 +139,17 @@ class _CareerPageState extends State<CareerPage> {
             text: bbtv, style: robotoMono, width: width, isMobile: false),
         CarouselExample(
           controller: carouselController,
-          imageList:
-              List.generate(3, (index) => '$assetPath/bbtv${index + 1}.png'),
+          imageList: bbtvImgList,
         ),
         SizedBox(height: 50),
+        lineBreak(width: width),
         careerDetail(
             text: marine, style: robotoMono, width: width, isMobile: false),
         CarouselExample(
           controller: carouselController,
-          imageList:
-              List.generate(3, (index) => '$assetPath/marine${index + 1}.png'),
+          imageList: marineImgList,
         ),
+        lineBreak(width: width),
         SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.all(10),
@@ -157,7 +165,7 @@ class _CareerPageState extends State<CareerPage> {
     TextStyle? style,
     bool isMobile = true,
   }) {
-    double paddingWidth = width * 0.10;
+    double paddingWidth = isMobile ? width * 0.025 : width * 0.10;
     double textPaddingWidth = width * 0.05;
 
     return Padding(
@@ -174,41 +182,101 @@ class _CareerPageState extends State<CareerPage> {
               children: [
                 Text(
                   text['name'],
-                  style: robotoMono.copyWith(fontSize: isMobile ? 14 : 40),
-                ),
-                ClipOval(
-                  child: Image.asset(
-                    text['logo'],
-                    width: isMobile ? 40 : 60,
-                    height: isMobile ? 40 : 60,
-                    fit: BoxFit.cover,
+                  style: robotoMono.copyWith(
+                    fontSize: isMobile ? 16 : 36,
+                    color: MyColors.white,
+                    fontWeight: FontWeight.w900,
                   ),
-                )
+                ),
+                (isMobile)
+                    ? Container()
+                    : Padding(
+                        padding: EdgeInsets.only(
+                            right: isMobile ? 0 : width * 0.055),
+                        child: ClipOval(
+                          child: Image.asset(
+                            text['logo'],
+                            width: isMobile ? 40 : 60,
+                            height: isMobile ? 40 : 60,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
               ],
             ),
           ),
+          (isMobile)
+              ? Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      textPaddingWidth, 0, textPaddingWidth, 20),
+                  child: Text(
+                    text['position'],
+                    style: robotoMono.copyWith(
+                      fontSize: isMobile ? 14 : 32,
+                      color: MyColors.darkPink,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                )
+              : Container(),
+          (isMobile)
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          textPaddingWidth, 0, textPaddingWidth, 10),
+                      child: Text(
+                        text['date'],
+                        style:
+                            robotoMono.copyWith(fontSize: isMobile ? 14 : 24),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: width * 0.055),
+                      child: ClipOval(
+                        child: Image.asset(
+                          text['logo'],
+                          width: isMobile ? 40 : 60,
+                          height: isMobile ? 40 : 60,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          textPaddingWidth, 0, textPaddingWidth, 20),
+                      child: Text(
+                        text['position'],
+                        style: robotoMono.copyWith(
+                            fontSize: isMobile ? 14 : 32,
+                            color: MyColors.darkPink,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          textPaddingWidth, 0, textPaddingWidth, 10),
+                      child: Text(
+                        text['date'],
+                        style:
+                            robotoMono.copyWith(fontSize: isMobile ? 12 : 24),
+                      ),
+                    ),
+                  ],
+                ),
           Padding(
             padding:
-                EdgeInsets.fromLTRB(textPaddingWidth, 0, textPaddingWidth, 20),
-            child: Text(
-              text['position'],
-              style: robotoMono.copyWith(fontSize: isMobile ? 16 : 32),
-            ),
-          ),
-          Padding(
-            padding:
-                EdgeInsets.fromLTRB(textPaddingWidth, 0, textPaddingWidth, 10),
-            child: Text(
-              text['date'],
-              style: robotoMono.copyWith(fontSize: isMobile ? 14 : 24),
-            ),
-          ),
-          Padding(
-            padding:
-                EdgeInsets.fromLTRB(textPaddingWidth, 0, textPaddingWidth, 0),
+                EdgeInsets.fromLTRB(textPaddingWidth, 30, textPaddingWidth, 0),
             child: Text(
               text['detail'],
-              style: robotoMono.copyWith(fontSize: isMobile ? 12 : 20),
+              style: robotoMono.copyWith(fontSize: isMobile ? 10 : 20),
             ),
           ),
         ],

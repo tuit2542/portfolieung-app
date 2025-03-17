@@ -107,7 +107,11 @@ class _CorePageState extends State<CorePage> {
         children: [
           SingleChildScrollView(
             child: Scrollbar(
-                controller: widget.controller, child: widget.child),
+                controller: widget.controller,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: widget.child,
+                )),
           ),
           if (_isMenuVisible && isMobile)
             appBarMenu(
