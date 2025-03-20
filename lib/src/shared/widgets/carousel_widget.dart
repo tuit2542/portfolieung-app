@@ -21,8 +21,9 @@ class CarouselExample extends StatelessWidget {
     bool isMobile = width < 600 ? true : false;
 
     return Container(
-      padding: EdgeInsets.fromLTRB(0, isMobile ? 0 : 50, 0, 0),
-      height: height * 0.6,
+      padding: EdgeInsets.fromLTRB(0, isMobile ? 50: 30, 0, 0),
+      height: isMobile ? null : height * 0.6,
+      color: Colors.transparent,
       child: CarouselSlider(
         controller: controller,
         options: CarouselOptions(

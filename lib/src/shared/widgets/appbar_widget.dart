@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
 import 'package:pongsathorn_port_app/src/shared/widgets/hover_widget.dart';
+import 'package:pongsathorn_port_app/src/styles/text_style.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   double width;
   List<Widget> children;
   Function()? onTap;
+  bool menuVisible;
 
   MyAppBar({
     super.key,
     required this.width,
     required this.children,
     this.onTap,
+    this.menuVisible = false,
   });
 
   @override
@@ -39,7 +41,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             child: HoverKalamText(
               label: "Pongsathorn",
-              fontSize: 50,
+              fontSize: 45,
               textColor: MyColors.white,
             ),
           ),
@@ -51,7 +53,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (width >= 1440) ...children.map((Widget item) => item),
         if (width < 1440)
           IconButton(
-            icon: const Icon(Icons.menu_rounded),
+            icon: menuVisible
+                ? Icon(Icons.close_rounded)
+                : Icon(Icons.menu_rounded),
             onPressed: onTap,
           ),
       ],
@@ -91,7 +95,7 @@ Widget footerCredit() {
     alignment: Alignment.bottomCenter,
     child: Text(
       "Power by Flutter",
-      style: GoogleFonts.robotoMono(
+      style: robotoMono.copyWith(
         fontSize: 15,
         color: MyColors.white,
       ),

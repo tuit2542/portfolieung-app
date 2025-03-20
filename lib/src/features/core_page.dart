@@ -66,7 +66,9 @@ class _CorePageState extends State<CorePage> {
         width,
         isMenu: isMenu,
         underlineString: widget.label,
-        onTap: () {},
+        onTap: () {
+          context.go("/Contact");
+        },
       ),
     ];
   }
@@ -100,6 +102,7 @@ class _CorePageState extends State<CorePage> {
       appBar: MyAppBar(
         width: width,
         onTap: toggleMenu,
+        menuVisible: _isMenuVisible,
         children: appBarChildren(width),
       ),
       backgroundColor: MyColors.darkNavy,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/hover_widget.dart';
+import 'package:pongsathorn_port_app/src/styles/text_style.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ContainerCard extends StatelessWidget {
+class ContainerCard extends StatefulWidget {
   final String label;
   final String logoStr;
   final bool isLoading;
@@ -25,22 +25,60 @@ class ContainerCard extends StatelessWidget {
   });
 
   @override
+  State<ContainerCard> createState() => _ContainerCardState();
+}
+
+class _ContainerCardState extends State<ContainerCard> {
+  bool onHover = false;
+
+  @override
   Widget build(BuildContext context) {
-    if (isLoading) {
-      return Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
+    Color textColor = onHover ? MyColors.lightPink : MyColors.white;
+
+    if (widget.isLoading) {
+      return Container(
+        margin: const EdgeInsets.all(10),
+        width: widget.boxSize,
+        height: widget.boxSize,
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: Container(
-          margin: const EdgeInsets.all(10),
-          width: boxSize,
-          height: boxSize,
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.3),
-            borderRadius: BorderRadius.circular(10),
+          padding: EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Shimmer.fromColors(
+                baseColor: Colors.grey[400]!,
+                highlightColor: Colors.grey[200]!,
+                child: Container(
+                  width: widget.iconSize,
+                  height: widget.iconSize,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  width: 70,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              )
+            ],
           ),
         ),
       );
     }
+
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -50,27 +88,35 @@ class ContainerCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          onHover: (value) {
+            setState(() {
+              onHover = value;
+            });
+          },
           onTap: () async {
             await launchUrl(
-                Uri.parse("https://www.google.com/search?q=$label"));
+                Uri.parse("https://www.google.com/search?q=${widget.label}"));
           },
           hoverColor: MyColors.lightNavy,
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            width: boxSize,
+            width: widget.boxSize,
             padding: EdgeInsets.all(10),
             child: Column(
               children: [
                 Image.asset(
-                  "$assetLogoStr${logoStr.toLowerCase()}.png",
-                  height: iconSize,
-                  width: iconSize,
+                  "${widget.assetLogoStr}${widget.logoStr.toLowerCase()}.png",
+                  height: widget.iconSize,
+                  width: widget.iconSize,
                 ),
                 SizedBox(height: 10),
                 Center(
-                  child: HoverRobotoMonoText(
-                    label: label,
-                    fontSize: fontSize,
+                  child: Text(
+                    widget.label,
+                    style: robotoMono.copyWith(
+                      color: textColor,
+                      fontSize: widget.fontSize,
+                    ),
                   ),
                 )
               ],

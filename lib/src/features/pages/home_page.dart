@@ -1,11 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/animate_widget.dart';
 import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/button_widget.dart';
 import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
-import 'package:pongsathorn_port_app/src/shared/widgets/hover_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:pongsathorn_port_app/src/styles/text_style.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -102,7 +102,7 @@ After completing military service, I am committed to enhancing my skills and imp
               animatedTexts: [
                 TypewriterAnimatedText(
                   greetingStr,
-                  textStyle: GoogleFonts.kalam(
+                  textStyle: kalam.copyWith(
                     color: MyColors.white,
                     fontSize: titleSize,
                     fontWeight: FontWeight.w900,
@@ -115,12 +115,14 @@ After completing military service, I am committed to enhancing my skills and imp
               pause: Duration(milliseconds: 1500),
             ),
           ),
-          Text(
-            roleStr,
-            style: GoogleFonts.kalam(
-              color: MyColors.darkPink,
-              fontSize: topicSize,
-              fontWeight: FontWeight.w600,
+          AnimateSlideWidget(
+            child: Text(
+              roleStr,
+              style: kalam.copyWith(
+                color: MyColors.darkPink,
+                fontSize: topicSize,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           Container(
@@ -133,7 +135,7 @@ After completing military service, I am committed to enhancing my skills and imp
             ),
             child: Text(
               isMobile ? desciptionStr2 : desciptionStr,
-              style: GoogleFonts.robotoMono(
+              style: robotoMono.copyWith(
                 color: MyColors.white,
                 fontSize: regularSize,
                 fontWeight: FontWeight.w300,
@@ -146,58 +148,27 @@ After completing military service, I am committed to enhancing my skills and imp
     );
   }
 
-  Widget downloadCV(double width, double height) {
-    Color hoverColor = MyColors.lightPink;
-
-    final Uri url = Uri.parse(
-        'https://drive.google.com/file/d/1F5XAJgbB7yLK0sbtuwRWbJ5v1UT1XLIN/view?usp=drive_link');
-
-    return Container(
-      margin: EdgeInsets.fromLTRB(0, height * 10 / 100, 0, height * 2 / 100),
-      color: MyColors.lightNavy,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          hoverColor: hoverColor,
-          child: HoverRobotoMonoText(
-            label: "Download CV",
-            fontSize: 20,
-            hoverColor: MyColors.white,
-            textColor: MyColors.lightPink,
-          ),
-          onTap: () async {
-            await launchUrl(url);
-          },
-        ),
-      ),
-    );
-  }
-
   Widget _contentDesktopSize(
       {required double dtHeight, required double dtWidth}) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Column(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+      child: Column(
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(dtWidth * 20 / 100, 100, 0, 0),
-                    child: profileImage(),
-                  ),
-                  desciptionProfile(dtWidth, dtHeight),
-                ],
-              ),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, dtHeight * 25 / 100, 0, 0),
-                child: footerCredit(),
+                padding: EdgeInsets.fromLTRB(dtWidth * 20 / 100, 100, 0, 0),
+                child: profileImage(),
               ),
+              desciptionProfile(dtWidth, dtHeight),
             ],
           ),
-        ),
-      ],
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, dtHeight * 25 / 100, 0, 0),
+            child: footerCredit(),
+          ),
+        ],
+      ),
     );
   }
 
@@ -205,29 +176,25 @@ After completing military service, I am committed to enhancing my skills and imp
     required double mbHeight,
     required double mbWidth,
   }) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-          child: Column(
-            children: [
-              profileImage(fixedSized: 200),
-              desciptionProfile(
-                mbWidth,
-                mbHeight,
-                regularSize: 15,
-                topicSize: 30,
-                titleSize: 50,
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    0, mbHeight * 10 / 100, 0, mbHeight * 2 / 100),
-                child: footerCredit(),
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+      child: Column(
+        children: [
+          profileImage(fixedSized: 200),
+          desciptionProfile(
+            mbWidth,
+            mbHeight,
+            regularSize: 15,
+            topicSize: 30,
+            titleSize: 50,
           ),
-        ),
-      ],
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, mbHeight * 10 / 100, 0, mbHeight * 2 / 100),
+            child: footerCredit(),
+          ),
+        ],
+      ),
     );
   }
 }

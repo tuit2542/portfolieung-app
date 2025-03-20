@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
 import 'package:pongsathorn_port_app/src/shared/utils/function.dart';
 import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
 import 'package:pongsathorn_port_app/src/shared/widgets/card_widget.dart';
 import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
+import 'package:pongsathorn_port_app/src/styles/text_style.dart';
 
 class SkillsPage extends StatefulWidget {
   const SkillsPage({super.key});
@@ -63,12 +63,12 @@ class _SkillsPageState extends State<SkillsPage> {
     double width = size.width;
     double height = size.height;
 
-    bool isMobile = width < 1440 ? true : false;
+    bool isMobile = width < 1440;
 
     return CorePage(
       label: "Skills",
       isLoading: _isLoading,
-      child: isMobile
+      child: (isMobile)
           ? _contentMobileSize(mbWidth: width, mbHeight: height)
           : _contentDestopSize(dtWidth: width, dtHeight: height),
     );
@@ -81,7 +81,7 @@ class _SkillsPageState extends State<SkillsPage> {
           alignment: Alignment.center,
           child: Text(
             "Tech Stack",
-            style: GoogleFonts.kalam(
+            style: kalam.copyWith(
               fontSize: 40,
               color: MyColors.lightPink,
             ),
@@ -102,7 +102,7 @@ class _SkillsPageState extends State<SkillsPage> {
           child: Text(
             "Tools",
             softWrap: true,
-            style: GoogleFonts.kalam(
+            style: kalam.copyWith(
               fontSize: 40,
               color: MyColors.lightPink,
             ),
@@ -123,7 +123,7 @@ class _SkillsPageState extends State<SkillsPage> {
           child: Text(
             "Languages",
             softWrap: true,
-            style: GoogleFonts.kalam(
+            style: kalam.copyWith(
               fontSize: 40,
               color: MyColors.lightPink,
             ),
@@ -136,7 +136,7 @@ class _SkillsPageState extends State<SkillsPage> {
               ...laguageList.map(
                 (language) => Text(
                   language,
-                  style: GoogleFonts.robotoMono(
+                  style: robotoMono.copyWith(
                     fontSize: 15,
                     color: MyColors.white,
                   ),
@@ -163,7 +163,7 @@ class _SkillsPageState extends State<SkillsPage> {
       children: [
         Text(
           "Tech Stack",
-          style: GoogleFonts.kalam(
+          style: kalam.copyWith(
             fontSize: 50,
             color: MyColors.lightPink,
           ),
@@ -177,7 +177,7 @@ class _SkillsPageState extends State<SkillsPage> {
         lineBreak(width: dtWidth),
         Text(
           "Tools",
-          style: GoogleFonts.kalam(
+          style: kalam.copyWith(
             fontSize: 50,
             color: MyColors.lightPink,
           ),
@@ -192,7 +192,7 @@ class _SkillsPageState extends State<SkillsPage> {
         Text(
           "Languages",
           softWrap: true,
-          style: GoogleFonts.kalam(
+          style: kalam.copyWith(
             fontSize: 50,
             color: MyColors.lightPink,
           ),
@@ -204,7 +204,7 @@ class _SkillsPageState extends State<SkillsPage> {
               ...laguageList.map(
                 (language) => Text(
                   language,
-                  style: GoogleFonts.robotoMono(
+                  style: robotoMono.copyWith(
                     fontSize: 15,
                     color: MyColors.white,
                   ),

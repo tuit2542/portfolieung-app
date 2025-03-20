@@ -1,10 +1,12 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pongsathorn_port_app/src/features/core_page.dart';
+import 'package:pongsathorn_port_app/src/shared/widgets/animate_widget.dart';
 import 'package:pongsathorn_port_app/src/shared/widgets/appbar_widget.dart';
 import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
+import 'package:pongsathorn_port_app/src/styles/text_style.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -52,12 +54,17 @@ I am eager hance my skills and contribute to a dynamic team.
     final width = size.width;
     final height = size.height;
 
+    bool isMobile = width < 900;
+
     return CorePage(
       controller: _scrollController,
       label: "About",
-      child: width < 900
-          ? _contentMobileSize(height: height, width: width)
-          : _contentDesktopSize(height: height, width: width),
+      child: (isMobile)
+          ? AnimateSlideWidget(
+              child: _contentMobileSize(height: height, width: width))
+          : AnimateSlideWidget(
+              fxList: [],
+              child: _contentDesktopSize(height: height, width: width)),
     );
   }
 
@@ -80,12 +87,12 @@ I am eager hance my skills and contribute to a dynamic team.
                     ),
                     child: Text(
                       "About Me",
-                      style: GoogleFonts.kalam(
+                      style: kalam.copyWith(
                         fontSize: 50,
                         color: MyColors.lightPink,
                       ),
                     ),
-                  ),
+                  ).animate(delay: 1000.ms),
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                       width * 5 / 100,
@@ -95,7 +102,7 @@ I am eager hance my skills and contribute to a dynamic team.
                     ),
                     child: Text(
                       personalData,
-                      style: GoogleFonts.robotoMono(
+                      style: robotoMono.copyWith(
                         fontSize: 24,
                         color: MyColors.white,
                       ),
@@ -107,7 +114,7 @@ I am eager hance my skills and contribute to a dynamic team.
                     child: Text(
                       desciptionData,
                       softWrap: true,
-                      style: GoogleFonts.robotoMono(
+                      style: robotoMono.copyWith(
                           fontSize: 20,
                           color: MyColors.white,
                           fontWeight: FontWeight.w300),
@@ -122,7 +129,7 @@ I am eager hance my skills and contribute to a dynamic team.
                     ),
                     child: Text(
                       "Education",
-                      style: GoogleFonts.kalam(
+                      style: kalam.copyWith(
                         fontSize: 50,
                         color: MyColors.lightPink,
                       ),
@@ -137,7 +144,7 @@ I am eager hance my skills and contribute to a dynamic team.
                     ),
                     child: Text(
                       collegeName,
-                      style: GoogleFonts.robotoMono(
+                      style: robotoMono.copyWith(
                         fontSize: 40,
                         color: MyColors.darkPink,
                       ),
@@ -152,7 +159,7 @@ I am eager hance my skills and contribute to a dynamic team.
                     ),
                     child: Text(
                       majorName,
-                      style: GoogleFonts.robotoMono(
+                      style: robotoMono.copyWith(
                         fontSize: 24,
                         color: MyColors.white,
                       ),
@@ -162,22 +169,20 @@ I am eager hance my skills and contribute to a dynamic team.
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
+                        padding: EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
                         child: Text(
                           "GPAX 3.02",
-                          style: GoogleFonts.robotoMono(
+                          style: robotoMono.copyWith(
                             fontSize: 24,
                             color: MyColors.white,
                           ),
                         ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsets.fromLTRB(0, 10, width * 5 / 100, 0),
+                        padding: EdgeInsets.fromLTRB(0, 10, width * 5 / 100, 0),
                         child: Text(
                           "2019 - 2022",
-                          style: GoogleFonts.robotoMono(
+                          style: robotoMono.copyWith(
                             fontSize: 24,
                             color: MyColors.white,
                           ),
@@ -209,7 +214,7 @@ I am eager hance my skills and contribute to a dynamic team.
               alignment: Alignment.center,
               child: Text(
                 "About Me",
-                style: GoogleFonts.kalam(
+                style: kalam.copyWith(
                   fontSize: 40,
                   color: MyColors.lightPink,
                 ),
@@ -219,7 +224,7 @@ I am eager hance my skills and contribute to a dynamic team.
               alignment: Alignment.center,
               child: Text(
                 personalData,
-                style: GoogleFonts.robotoMono(
+                style: robotoMono.copyWith(
                   fontSize: 15,
                   color: MyColors.white,
                 ),
@@ -231,7 +236,7 @@ I am eager hance my skills and contribute to a dynamic team.
               child: Text(
                 desciptionData,
                 softWrap: true,
-                style: GoogleFonts.robotoMono(
+                style: robotoMono.copyWith(
                   fontSize: 15,
                   color: MyColors.white,
                   fontWeight: FontWeight.w300,
@@ -243,7 +248,7 @@ I am eager hance my skills and contribute to a dynamic team.
               child: Text(
                 "Education",
                 softWrap: true,
-                style: GoogleFonts.kalam(
+                style: kalam.copyWith(
                   fontSize: 40,
                   color: MyColors.lightPink,
                 ),
@@ -253,7 +258,7 @@ I am eager hance my skills and contribute to a dynamic team.
               padding: EdgeInsets.fromLTRB(width * 5 / 100, 0, 0, 0),
               child: Text(
                 collegeName,
-                style: GoogleFonts.robotoMono(
+                style: robotoMono.copyWith(
                   fontSize: 20,
                   color: MyColors.darkPink,
                 ),
@@ -263,7 +268,7 @@ I am eager hance my skills and contribute to a dynamic team.
               padding: EdgeInsets.fromLTRB(width * 5 / 100, 10, 0, 0),
               child: Text(
                 majorName,
-                style: GoogleFonts.robotoMono(
+                style: robotoMono.copyWith(
                   fontSize: 15,
                   color: MyColors.white,
                 ),
@@ -281,7 +286,7 @@ I am eager hance my skills and contribute to a dynamic team.
                   ),
                   child: Text(
                     "GPAX 3.02",
-                    style: GoogleFonts.robotoMono(
+                    style: robotoMono.copyWith(
                         fontSize: 15,
                         color: MyColors.white,
                         fontWeight: FontWeight.bold),
@@ -296,7 +301,7 @@ I am eager hance my skills and contribute to a dynamic team.
                   ),
                   child: Text(
                     "2019 - 2022",
-                    style: GoogleFonts.robotoMono(
+                    style: robotoMono.copyWith(
                         fontSize: 15,
                         color: MyColors.white,
                         fontWeight: FontWeight.bold),

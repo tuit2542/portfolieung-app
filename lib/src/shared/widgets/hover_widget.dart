@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pongsathorn_port_app/src/styles/colors_theme.dart';
+import 'package:pongsathorn_port_app/src/styles/text_style.dart';
 
 class HoverKalamText extends StatefulWidget {
   String label;
@@ -36,7 +36,7 @@ class _HoverKalamTextState extends State<HoverKalamText> {
       }),
       child: Text(
         widget.label,
-        style: GoogleFonts.kalam(
+        style: kalam.copyWith(
           color: widget.underline
               ? widget.hoverColor ?? MyColors.lightPink
               : _textColor ?? widget.textColor,
@@ -86,7 +86,7 @@ class _HoverRobotoMonoTextState extends State<HoverRobotoMonoText> {
       }),
       child: Text(
         widget.label,
-        style: GoogleFonts.robotoMono(
+        style: robotoMono.copyWith(
           color: widget.underline
               ? widget.hoverColor ?? MyColors.lightPink
               : _textColor ?? widget.textColor,

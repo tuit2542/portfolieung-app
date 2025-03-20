@@ -60,7 +60,7 @@ class _CareerPageState extends State<CareerPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    bool isMobile = width < 1440 ? true : false;
+    bool isMobile = width < 1440;
 
     ScrollController scrollController = ScrollController();
     CarouselSliderController carouselController = CarouselSliderController();
@@ -68,7 +68,7 @@ class _CareerPageState extends State<CareerPage> {
     return CorePage(
       controller: scrollController,
       label: "Career",
-      child: isMobile
+      child: (isMobile)
           ? _mobileContent(width, height, carouselController)
           : _desktopContent(width, height, carouselController),
     );
@@ -88,7 +88,6 @@ class _CareerPageState extends State<CareerPage> {
           imageList: scbImgList,
         ),
         lineBreak(width: width),
-        SizedBox(height: 50),
         Text(
           "Work Experienced",
           style: kalam.copyWith(fontSize: 40, color: MyColors.lightPink),
@@ -98,7 +97,6 @@ class _CareerPageState extends State<CareerPage> {
           controller: carouselController,
           imageList: bbtvImgList,
         ),
-        SizedBox(height: 50),
         lineBreak(width: width),
         careerDetail(text: marine, style: robotoMono, width: width),
         CarouselExample(
@@ -106,7 +104,6 @@ class _CareerPageState extends State<CareerPage> {
           imageList: marineImgList,
         ),
         lineBreak(width: width),
-        SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.all(10),
           child: footerCredit(),
@@ -130,7 +127,6 @@ class _CareerPageState extends State<CareerPage> {
           imageList: scbImgList,
         ),
         lineBreak(width: width),
-        SizedBox(height: 100),
         Text(
           "Work Experienced",
           style: kalam.copyWith(fontSize: 50, color: MyColors.lightPink),
@@ -141,7 +137,6 @@ class _CareerPageState extends State<CareerPage> {
           controller: carouselController,
           imageList: bbtvImgList,
         ),
-        SizedBox(height: 50),
         lineBreak(width: width),
         careerDetail(
             text: marine, style: robotoMono, width: width, isMobile: false),
@@ -150,7 +145,6 @@ class _CareerPageState extends State<CareerPage> {
           imageList: marineImgList,
         ),
         lineBreak(width: width),
-        SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.all(10),
           child: footerCredit(),
@@ -176,7 +170,7 @@ class _CareerPageState extends State<CareerPage> {
         children: [
           Padding(
             padding:
-                EdgeInsets.fromLTRB(textPaddingWidth, 0, textPaddingWidth, 20),
+                EdgeInsets.fromLTRB(textPaddingWidth, 0, textPaddingWidth, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -208,7 +202,7 @@ class _CareerPageState extends State<CareerPage> {
           (isMobile)
               ? Padding(
                   padding: EdgeInsets.fromLTRB(
-                      textPaddingWidth, 0, textPaddingWidth, 20),
+                      textPaddingWidth, 0, textPaddingWidth, 0),
                   child: Text(
                     text['position'],
                     style: robotoMono.copyWith(

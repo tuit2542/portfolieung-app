@@ -5,6 +5,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:pongsathorn_port_app/src/features/pages/about_page.dart';
 import 'package:pongsathorn_port_app/src/features/pages/career_page.dart';
+import 'package:pongsathorn_port_app/src/features/pages/contact_page.dart';
 import 'package:pongsathorn_port_app/src/features/pages/home_page.dart';
 import 'package:pongsathorn_port_app/src/features/pages/skills_page.dart';
 import 'package:pongsathorn_port_app/src/shared/widgets/fullscreen_widget.dart';
@@ -49,7 +50,7 @@ class AppRouter {
       GoRoute(
         path: '/Contact',
         builder: (context, state) {
-          return const HomePage();
+          return const ContactPage();
         },
       ),
       GoRoute(
