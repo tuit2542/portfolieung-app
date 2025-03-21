@@ -54,42 +54,45 @@ class _ContactPageState extends State<ContactPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Text(
+                  "Location",
+                  style: kalam.copyWith(
+                    fontSize: 50,
+                    color: MyColors.lightPink,
+                  ),
+                ),
+                _mapWidget(width, height),
+              ],
+            ),
+            SizedBox(width: 50),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Get In Touch",
+                  style: kalam.copyWith(
+                    fontSize: 50,
+                    color: MyColors.lightPink,
+                  ),
+                ),
+                SizedBox(
+                  width: width * 0.4,
+                  height: height * 0.6,
+                  child: _formMailSender(height, width),
+                ),
+              ],
+            ),
+          ],
+        ),
         Padding(
-          padding: const EdgeInsets.all(30),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    "Location",
-                    style: kalam.copyWith(
-                      fontSize: 50,
-                      color: MyColors.lightPink,
-                    ),
-                  ),
-                  _mapWidget(width, height),
-                ],
-              ),
-              SizedBox(width: 50),
-              Column(
-                children: [
-                  Text(
-                    "Get In Touch",
-                    style: kalam.copyWith(
-                      fontSize: 50,
-                      color: MyColors.lightPink,
-                    ),
-                  ),
-                  Container(
-                    width: width * 0.4,
-                    height: height,
-                    child: _formMailSender(height, width),
-                  ),
-                ],
-              ),
-            ],
-          ),
+          padding: EdgeInsets.fromLTRB(0, height * 12 / 100, 0, 0),
+          child: socialIconRow(),
         ),
         footerCredit(),
       ],
@@ -98,7 +101,7 @@ class _ContactPageState extends State<ContactPage> {
 
   Widget _contentMobileSize({required double height, required double width}) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         children: [
           Text(
@@ -117,12 +120,12 @@ class _ContactPageState extends State<ContactPage> {
               color: MyColors.lightPink,
             ),
           ),
-          _socialIconRow(),
           _formMailSender(height, width),
           Padding(
-            padding: const EdgeInsets.only(top: 100),
-            child: footerCredit(),
+            padding: EdgeInsets.only(top: height * 10 / 100),
+            child: socialIconRow(),
           ),
+          footerCredit(),
         ],
       ),
     );
@@ -353,50 +356,6 @@ class _ContactPageState extends State<ContactPage> {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _socialIconRow() {
-    List<Map<String, dynamic>> iconList = [
-      {'github': 'https://github.com/tuit2542'},
-      {'linkedin': 'https://www.linkedin.com/in/pongsathorn-dev/'},
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(iconList.length, (index) {
-          return _socialIcon(iconList[index]);
-        }),
-      ),
-    );
-  }
-
-  Widget _socialIcon(Map<String, dynamic> socialStr) {
-    return Container(
-      width: 30,
-      height: 30,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          splashColor: MyColors.lightNavy,
-          highlightColor: MyColors.lightNavy,
-          borderRadius: BorderRadius.circular(100),
-          child: ImageIcon(
-            AssetImage(
-              "assets/logos/contact/${socialStr.keys.first}.png",
-            ),
-            color: MyColors.white,
-          ),
-          onTap: () async {
-            await launchUrl(Uri.parse(socialStr.values.first));
-          },
         ),
       ),
     );

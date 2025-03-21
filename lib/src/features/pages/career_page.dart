@@ -82,6 +82,7 @@ class _CareerPageState extends State<CareerPage> {
           "Internship",
           style: kalam.copyWith(fontSize: 40, color: MyColors.lightPink),
         ),
+        SizedBox(height: 20),
         careerDetail(text: scb, style: robotoMono, width: width),
         CarouselExample(
           controller: carouselController,
@@ -92,6 +93,7 @@ class _CareerPageState extends State<CareerPage> {
           "Work Experienced",
           style: kalam.copyWith(fontSize: 40, color: MyColors.lightPink),
         ),
+        SizedBox(height: 20),
         careerDetail(text: bbtv, style: robotoMono, width: width),
         CarouselExample(
           controller: carouselController,
@@ -104,10 +106,7 @@ class _CareerPageState extends State<CareerPage> {
           imageList: marineImgList,
         ),
         lineBreak(width: width),
-        Padding(
-          padding: const EdgeInsets.all(10),
-          child: footerCredit(),
-        ),
+        footerCredit(),
       ],
     );
   }
@@ -118,8 +117,12 @@ class _CareerPageState extends State<CareerPage> {
       children: [
         Text(
           "Internship",
-          style: kalam.copyWith(fontSize: 50, color: MyColors.lightPink),
+          style: kalam.copyWith(
+            fontSize: 50,
+            color: MyColors.lightPink,
+          ),
         ),
+        SizedBox(height: 20),
         careerDetail(
             text: scb, style: robotoMono, width: width, isMobile: false),
         CarouselExample(
@@ -131,6 +134,7 @@ class _CareerPageState extends State<CareerPage> {
           "Work Experienced",
           style: kalam.copyWith(fontSize: 50, color: MyColors.lightPink),
         ),
+        SizedBox(height: 20),
         careerDetail(
             text: bbtv, style: robotoMono, width: width, isMobile: false),
         CarouselExample(
@@ -145,10 +149,7 @@ class _CareerPageState extends State<CareerPage> {
           imageList: marineImgList,
         ),
         lineBreak(width: width),
-        Padding(
-          padding: const EdgeInsets.all(10),
-          child: footerCredit(),
-        ),
+        footerCredit(),
       ],
     );
   }
@@ -163,8 +164,8 @@ class _CareerPageState extends State<CareerPage> {
     double textPaddingWidth = width * 0.05;
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(
-          paddingWidth, 50, paddingWidth, isMobile ? 0 : 50),
+      padding:
+          EdgeInsets.fromLTRB(paddingWidth, 0, paddingWidth, isMobile ? 0 : 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -179,7 +180,7 @@ class _CareerPageState extends State<CareerPage> {
                   style: robotoMono.copyWith(
                     fontSize: isMobile ? 16 : 36,
                     color: MyColors.white,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 (isMobile)

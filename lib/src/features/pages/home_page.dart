@@ -46,12 +46,17 @@ class _HomePageState extends State<HomePage> {
         boxShadow: const [
           BoxShadow(
             color: Colors.black,
-            blurRadius: 10,
-            offset: Offset(0, 3),
+            blurRadius: 20,
+            offset: Offset(3, 3),
           ),
           BoxShadow(
             color: Colors.black,
-            blurRadius: 20,
+            blurRadius: 50,
+            offset: Offset(0, 3),
+          ),
+          BoxShadow(
+            color: MyColors.darkNavy,
+            blurRadius: 100,
             offset: Offset(3, 3),
           ),
         ],
@@ -164,9 +169,10 @@ After completing military service, I am committed to enhancing my skills and imp
             ],
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, dtHeight * 25 / 100, 0, 0),
-            child: footerCredit(),
+            padding: EdgeInsets.fromLTRB(0, dtHeight * 15 / 100, 0, 0),
+            child: socialIconRow(),
           ),
+          footerCredit(),
         ],
       ),
     );
@@ -189,10 +195,10 @@ After completing military service, I am committed to enhancing my skills and imp
             titleSize: 50,
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(
-                0, mbHeight * 10 / 100, 0, mbHeight * 2 / 100),
-            child: footerCredit(),
+            padding: EdgeInsets.fromLTRB(0, mbHeight * 10 / 100, 0, 0),
+            child: socialIconRow(),
           ),
+          footerCredit(),
         ],
       ),
     );

@@ -190,11 +190,10 @@ I am eager hance my skills and contribute to a dynamic team.
                       ),
                     ],
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0, height * 20 / 100, 0, height * 2 / 100),
-                    child: footerCredit(),
+                  SizedBox(
+                    height: height * 15 / 100,
                   ),
+                  footerCredit(),
                 ],
               ),
             ),
@@ -309,11 +308,10 @@ I am eager hance my skills and contribute to a dynamic team.
                 ),
               ],
             ),
-            Container(
-              margin: EdgeInsets.fromLTRB(
-                  0, height * 20 / 100, 0, height * 2 / 100),
-              child: footerCredit(),
+            SizedBox(
+              height: height * 22 / 100,
             ),
+            footerCredit(),
           ],
         ),
       ],

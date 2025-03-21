@@ -145,9 +145,8 @@ class _SkillsPageState extends State<SkillsPage> {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.fromLTRB(
-              0, mbHeight * 20 / 100, 0, mbHeight * 2 / 100),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, mbHeight * 20 / 100, 0, 0),
           child: footerCredit(),
         ),
       ],
@@ -214,8 +213,7 @@ class _SkillsPageState extends State<SkillsPage> {
           ),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(
-              0, dtHeight * 20 / 100, 0, dtHeight * 2 / 100),
+          margin: EdgeInsets.fromLTRB(0, dtHeight * 20 / 100, 0, 0),
           child: footerCredit(),
         )
       ],
