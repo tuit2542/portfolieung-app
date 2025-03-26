@@ -105,7 +105,7 @@ Widget footerCredit() {
     child: Align(
       alignment: Alignment.bottomCenter,
       child: Text(
-        "Power by Flutter",
+        "Powered by Flutter",
         style: robotoMono.copyWith(
           fontSize: 15,
           color: MyColors.white,
