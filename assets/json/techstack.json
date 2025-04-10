@@ -55,9 +55,6 @@
             "nodejs": "Node.js"
         },
         {
-            "nextjs": "Next.js"
-        },
-        {
             "netlify": "Netlify"
         },
         {
@@ -82,9 +79,6 @@
     "toolList": [
         {
             "azure": "Azure"
-        },
-        {
-            "bash": "Bash"
         },
         {
             "canva": "Canva"
