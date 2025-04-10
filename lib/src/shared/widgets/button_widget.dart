@@ -66,7 +66,7 @@ Widget downloadCV(double width, double height) {
     Color hoverColor = MyColors.lightPink;
 
     final Uri url = Uri.parse(
-        'https://drive.google.com/file/d/1F5XAJgbB7yLK0sbtuwRWbJ5v1UT1XLIN/view?usp=drive_link');
+        'https://drive.google.com/file/d/1eaINvluOriftS105jItctC_95T_I-SRy/view?usp=drive_link');
 
     return Container(
       margin: EdgeInsets.fromLTRB(0, height * 10 / 100, 0, height * 2 / 100),
